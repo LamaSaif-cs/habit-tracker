@@ -26,17 +26,20 @@ A full-stack web application built with Flask and SQLite that helps users track 
 
 ## Screenshots
 
+### main interface
+![main](main%interface.png)
+
+### Login
+![login](login.png)
+
+### Signup
+![signup](signup.png)
+
 ### Dashboard
 ![dashboard](dashboard.png)
 
-### Login
-![login](images/login.png)
-
-### Signup
-![signup](images/signup.png)
-
 ### Habits List
-![habits list](images/habits%20list.png)
+![habits list](habits%20list.png)
 
 ### Edit Habit
-![edit habit](images/edit%20habit.png)
+![edit habit](edit%20habit.png)
