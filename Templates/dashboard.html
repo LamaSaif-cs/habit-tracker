@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            Habit Tracker
+        </a>
+
+        <div>
+
+            <span class="text-white me-3">
+                Welcome {{ username }}
+            </span>
+
+            <a href="/logout" class="btn btn-danger">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container mt-4">
+
+    <!-- Statistics -->
+
+    <div class="row mb-4">
+
+        <div class="col-md-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Total Habits</h5>
+
+                    <h2>{{ total_habits }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Completed Habits</h5>
+
+                    <h2>{{ completed_habits }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow border-0 mb-4">
+
+        <div class="card-body">
+
+            <h5>Progress</h5>
+
+            <div class="progress" style="height: 25px;">
+
+                <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: {{ progress }}%;">
+
+                    {{ progress }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Add Habit -->
+
+    <div class="card shadow border-0 mb-4">
+
+        <div class="card-body">
+
+            <h3 class="mb-3">
+                Add New Habit
+            </h3>
+
+            <form method="POST" action="/add_habit">
+
+                <input
+                    type="text"
+                    name="title"
+                    class="form-control mb-3"
+                    placeholder="Habit Title"
+                    required>
+
+                <textarea
+                    name="description"
+                    class="form-control mb-3"
+                    rows="3"
+                    placeholder="Habit Description"></textarea>
+
+                <button class="btn btn-primary">
+                    Add Habit
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Habits -->
+
+    <div class="row">
+
+        {% for habit in habits %}
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 mb-4">
+
+                <div class="card-body">
+
+                    <h4>
+                        {{ habit.title }}
+                    </h4>
+
+                    <p>
+                        {{ habit.description }}
+                    </p>
+
+                    {% if habit.completed %}
+
+                    <span class="badge bg-success mb-3">
+                        Completed
+                    </span>
+
+                    {% else %}
+
+                    <span class="badge bg-warning text-dark mb-3">
+                        Pending
+                    </span>
+
+                    {% endif %}
+
+                    <br>
+
+                    <a href="/toggle_habit/{{ habit.id }}"
+                       class="btn btn-success btn-sm">
+
+                        Toggle Status
+
+                    </a>
+
+                    <a href="/edit_habit/{{ habit.id }}"
+                       class="btn btn-warning btn-sm">
+
+                        Edit
+
+                    </a>
+
+                    <a href="/delete_habit/{{ habit.id }}"
+                       class="btn btn-danger btn-sm">
+
+                        Delete
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
