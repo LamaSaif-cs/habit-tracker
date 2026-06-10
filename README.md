@@ -29,11 +29,11 @@ A full-stack web application built with Flask and SQLite that helps users track 
 ### main interface
 ![main](main%20interface.png)
 
-### Login
-![login](login.png)
-
 ### Signup
 ![signup](signup.png)
+
+### Login
+![login](login.png)
 
 ### Dashboard
 ![dashboard](dashboard.png)
