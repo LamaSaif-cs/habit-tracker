@@ -27,7 +27,7 @@ A full-stack web application built with Flask and SQLite that helps users track 
 ## Screenshots
 
 ### Dashboard
-![dashboard](images/dashboard.png)
+![dashboard](dashboard.png)
 
 ### Login
 ![login](images/login.png)
